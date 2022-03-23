@@ -1,14 +1,19 @@
 #include <Wire.h>
 
+//sht30 address
+#define sht30_addr 0x44
+
+//setup
 void setup() {
   //init wire
-  wire.begin();
+  Wire.begin();
   //init serial, baud 115200
   Serial.begin(115200);
   //print
   Serial.println("SHT30 sensor demo code");
 }
 
+//loop
 void loop() {
   //get temp and humidity
   getExtTempHum();
@@ -22,7 +27,7 @@ inline void getExtTempHum() {
   uint8_t x = 0;
   float ext_temp = 0.0; //ambient temp
   float ext_hum = 0.0; //ambient humidity
-  flot temp = 0;
+  float temp = 0;
 
   Wire.beginTransmission(sht30_addr);
   Wire.write(config[0]);
@@ -40,5 +45,7 @@ inline void getExtTempHum() {
   ext_hum = double(100.0 * ((data[3] * 256.0 + data[4]) / 65535.0));
 
   //print the values
-  Serial.print("Temp: #.2f, Hum: %.2f\n", ext_temp, ext_hum);
+  Serial.print("Temp: "); Serial.print(ext_temp);
+  Serial.print(", Hum: "); Serial.print(ext_hum);
+  Serial.println();
 }
