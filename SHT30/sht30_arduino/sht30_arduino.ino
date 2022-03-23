@@ -1,3 +1,8 @@
+/*
+ * SHT30 demo code
+ * (c) muchirijohn -  https://bit.ly/3D2W7Cs
+ */
+
 #include <Wire.h>
 
 //sht30 address
