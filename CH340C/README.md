@@ -1,5 +1,5 @@
 #CH340C application example
-<img src="CH340C_SOP-16_150MIL.jpg" alt="Logo" max-width="600" max-height="600">
+<img src="CH340C_Schematic.png" alt="Logo" max-width="600" max-height="600">
 
 ##Pinouts
 
