@@ -1,8 +1,9 @@
-#CH340C application example
+<br>
+## CH340C application example
 <img src="CH340C_Schematic.png" alt="Logo" max-width="600" max-height="600">
-
-##Pinouts
-
+<br>
+## Pinouts
+<br>
 Pin|Label|Input/Output|Description
 |---|----|------------|----------|
 U_DP|USB DP
