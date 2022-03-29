@@ -4,10 +4,10 @@
 
 ## Pinouts
 
-Pin|Label|Input/Output|Description
-|---|----|------------|----------|
-U_DP|USB DP
-U_DM|USB DM
+Pin|Label|Input/Output Description
+|---|----|------------|
+U_DP|USB DP|D+ pin
+U_DM|USB DM|D- pin
 U_RX|Input|Serial Receive
 U_TX|Output|Serial Transmit
 U_DTR|Output|Data Terminal Ready, Active Low
