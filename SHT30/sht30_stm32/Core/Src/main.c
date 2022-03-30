@@ -168,6 +168,9 @@ void uart_print(char *ch) {
 	}
 }
 
+/**
+ * get sensor values
+ */
 uint8_t sht30x_get() {
 	uint8_t data[6] = { 0 };
 	uint8_t config[2] = { 0 };
@@ -180,7 +183,7 @@ uint8_t sht30x_get() {
 	state = HAL_I2C_IsDeviceReady(&hi2c1, address, 2, 2000);
 
 	if (state != HAL_OK) {
-		//usart_puts(&huart1, (char*) "SHT30 DEVICE NOT READY\n");
+		//uart_print("SHT30 DEVICE NOT READY\n");
 		return 0;
 	}
 
@@ -190,7 +193,7 @@ uint8_t sht30x_get() {
 	state = HAL_I2C_Master_Transmit(&hi2c1, address, &config[0], 2, 1500);
 
 	if (state != HAL_OK) {
-		//usart_puts(&huart1, (char*) "SHT30 DEVICE TRANSMIT ERROR\n");
+		//uart_print("SHT30 DEVICE TRANSMIT ERROR\n");
 		return 0;
 	}
 	HAL_Delay(5);
@@ -198,7 +201,7 @@ uint8_t sht30x_get() {
 	state = HAL_I2C_Master_Receive(&hi2c1, address, &data[0], 6, 1500);
 
 	if (state != HAL_OK) {
-		//usart_puts(&huart1, (char*) "SHT30 DEVICE RECEIVE ERROR\n");
+		//uart_print("SHT30 DEVICE RECEIVE ERROR\n");
 		return 0;
 	}
 	HAL_Delay(50);
@@ -215,18 +218,23 @@ uint8_t sht30x_get() {
  * print sensor values
  */
 void print_SHT30_values() {
-	char buffer[38] = { 0 };
+	char buffer[4] = { 0 };
 	uint8_t state = 0;
 	//read sensor
 	state = sht30x_get();
 	//show error message if reading failed
-	if(state== 0){
+	if (state == 0) {
 		uart_print("Failed to Read.\n");
 		return;
 	}
 	//print the reading
-	sprintf(buffer, "SHT30 >> C : %d, F : %d, H : %d\r\n", cTemp, fTemp,
-			humidity);
+	itoa(cTemp, buffer, 10);
+	uart_print("SHT30 >> C: ");
+	uart_print(buffer);
+	memset(buffer, 0, 4);
+	//humidity
+	itoa(humidity, buffer, 10);
+	uart_print(", H: ");
 	uart_print(buffer);
 	uart_puts('\n');
 }
