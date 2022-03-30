@@ -213,14 +213,14 @@ uint8_t sht30x_get() {
 }
 
 void print_SHT30_values() {
-	char buffer[6] = { 0 };
+	char buffer[4] = { 0 };
 	sht30x_get();
 	//sht30 temperature and humidity
 	uart_print("SHT30 T: ");
 	itoa(cTemp, buffer, 10);
 	uart_print(buffer);
-	memset(buffer, 0, 6);
-	uart_print("H: ");
+	memset(buffer, 0, 4);
+	uart_print(", H: ");
 	itoa(humidity, buffer, 10);
 	uart_print(buffer);
 	uart_puts('\n');
