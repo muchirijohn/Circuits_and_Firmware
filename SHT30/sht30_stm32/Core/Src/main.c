@@ -187,8 +187,7 @@ uint8_t sht30x_get() {
 	config[0] = 0x2c;
 	config[1] = 0x06;
 	//send config data
-	state = HAL_I2C_Master_Transmit(&hi2c1, address, &config[0], 2,
-			1500);
+	state = HAL_I2C_Master_Transmit(&hi2c1, address, &config[0], 2, 1500);
 
 	if (state != HAL_OK) {
 		//usart_puts(&huart1, (char*) "SHT30 DEVICE TRANSMIT ERROR\n");
@@ -213,8 +212,8 @@ uint8_t sht30x_get() {
 }
 
 void print_SHT30_values() {
-	char buffer[4] = { 0 };
-	sht30x_get();
+	char buffer[32] = { 0 };
+	/*sht30x_get();
 	//sht30 temperature and humidity
 	uart_print("SHT30 T: ");
 	itoa(cTemp, buffer, 10);
@@ -223,9 +222,9 @@ void print_SHT30_values() {
 	uart_print(", H: ");
 	itoa(humidity, buffer, 10);
 	uart_print(buffer);
-	uart_puts('\n');
-	/*sprintf(buffer, "C : %d, F : %d, H : %d\r\n", cTemp,
-	 fTemp, humidity);*/
+	uart_puts('\n');*/
+	sprintf(buffer, "C : %d, F : %d, H : %d\r\n", cTemp,
+	 fTemp, humidity);
 }
 /* USER CODE END 4 */
 
