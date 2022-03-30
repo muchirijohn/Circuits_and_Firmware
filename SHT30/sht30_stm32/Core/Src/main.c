@@ -162,18 +162,17 @@ void uart_print(char *ch) {
 }
 
 void print_SHT30_values() {
-	char buffer[4] = { 0 };
+	char buffer[6] = { 0 };
 	sht30x_get();
 	//sht30 temperature and humidity
-	uart_print("SHT30 T: ");
+	/*uart_print("SHT30 T: ");
 	itoa(sht30x->cTemp, buffer, 10);
 	uart_print(buffer);
 	uart_print("H: ");
 	itoa(sht30x->humidity, buffer, 10);
 	uart_print(buffer);
-	uart_puts('\n');
-	/*sprintf(buffer, "C : %d, F : %d, H : %d\r\n", sht30x->cTemp,
-	 sht30x->fTemp, sht30x->humidity);*/
+	uart_puts('\n');*/
+	snprintf(buffer, "%d", sht30x->humidity);
 }
 /* USER CODE END 4 */
 
