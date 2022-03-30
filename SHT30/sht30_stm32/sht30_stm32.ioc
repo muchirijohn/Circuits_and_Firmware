@@ -25,6 +25,7 @@ MxCube.Version=6.5.0
 MxDb.Version=DB.6.0.50
 NVIC.ForceEnableDMAVector=true
 NVIC.HardFault_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:true
+NVIC.I2C1_IRQn=true\:0\:0\:false\:false\:true\:true\:true\:true
 NVIC.NonMaskableInt_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:true
 NVIC.PendSV_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:true
 NVIC.SVC_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:true

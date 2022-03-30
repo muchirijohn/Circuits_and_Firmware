@@ -24,8 +24,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "sht30x.h"
 /* USER CODE END Includes */
 
@@ -59,7 +59,7 @@ void print_SHT30_values();
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern sht30x_info *sht30x;
 /* USER CODE END 0 */
 
 /**
@@ -92,17 +92,14 @@ int main(void) {
 	MX_I2C1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-	__HAL_I2C_ENABLE(&hi2c1);
+
 	/* USER CODE END 2 */
-	//init sht30x temp&hum sensor
-	//sht30x_init(0x44);
+
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		//print_SHT30_values();
+		print_SHT30_values();
 		HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
-		uart_print("hello world");
-		uart_puts('\n');
 		HAL_Delay(500);
 		/* USER CODE END WHILE */
 
@@ -165,12 +162,18 @@ void uart_print(char *ch) {
 }
 
 void print_SHT30_values() {
-	/*char buffer[64] = { 0 };
-	//sht30 temperature and humidity
+	char buffer[4] = { 0 };
 	sht30x_get();
-	sprintf(buffer, "SHT30 -> C : %d, F : %d, H : %d\r\n", sht30x->cTemp,
-			sht30x->fTemp, sht30x->humidity);
-	uart_print(buffer);*/
+	//sht30 temperature and humidity
+	uart_print("SHT30 T: ");
+	itoa(sht30x->cTemp, buffer, 10);
+	uart_print(buffer);
+	uart_print("H: ");
+	itoa(sht30x->humidity, buffer, 10);
+	uart_print(buffer);
+	uart_puts('\n');
+	/*sprintf(buffer, "C : %d, F : %d, H : %d\r\n", sht30x->cTemp,
+	 sht30x->fTemp, sht30x->humidity);*/
 }
 /* USER CODE END 4 */
 

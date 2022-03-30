@@ -21,8 +21,11 @@
 #include "i2c.h"
 #include "sht30x.h"
 
+
+sht30x_info *sht30x;
+
 void sht30x_init(uint8_t address) {
-	sht30x = &sht30x_info;
+	//sht30x = &sht30x_info;
 
 	sht30x->address = address << 1;
 	sht30x->cTemp = 0;

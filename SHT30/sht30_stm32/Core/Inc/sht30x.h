@@ -23,13 +23,13 @@
 
 void sht30x_init(uint8_t address);
 uint8_t sht30x_get();
-struct sht30x_data{
+typedef struct sht30x_data{
 	uint8_t address;
 	short int cTemp;
 	short int fTemp;
 	uint8_t humidity;
 }sht30x_info;
 
-struct sht30x_data *sht30x;
+//sht30x_info *sht30x;
 
 #endif /* SHT30X_H_ */
