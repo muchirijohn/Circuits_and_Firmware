@@ -211,8 +211,20 @@ uint8_t sht30x_get() {
 	return 1;
 }
 
+/**
+ * print sensor values
+ */
 void print_SHT30_values() {
 	char buffer[38] = { 0 };
+	uint8_t state = 0;
+	//read sensor
+	state = sht30x_get();
+	//show error message if reading failed
+	if(state== 0){
+		uart_print("Failed to Read.\n");
+		return;
+	}
+	//print the reading
 	sprintf(buffer, "SHT30 >> C : %d, F : %d, H : %d\r\n", cTemp, fTemp,
 			humidity);
 	uart_print(buffer);
