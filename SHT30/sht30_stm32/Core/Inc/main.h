@@ -57,6 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define U_TX_Pin GPIO_PIN_2
+#define U_TX_GPIO_Port GPIOA
+#define U_RX_Pin GPIO_PIN_3
+#define U_RX_GPIO_Port GPIOA
+#define USER_LED_Pin GPIO_PIN_1
+#define USER_LED_GPIO_Port GPIOB
+#define SCL_Pin GPIO_PIN_9
+#define SCL_GPIO_Port GPIOA
+#define SDA_Pin GPIO_PIN_10
+#define SDA_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
