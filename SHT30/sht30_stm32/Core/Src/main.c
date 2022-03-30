@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "sht30x.h"
 /* USER CODE END Includes */
 
@@ -92,7 +93,8 @@ int main(void) {
 	MX_I2C1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-
+	//init sht30x temp&hum sensor
+	sht30x_init(0x44);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -165,14 +167,16 @@ void print_SHT30_values() {
 	char buffer[6] = { 0 };
 	sht30x_get();
 	//sht30 temperature and humidity
-	/*uart_print("SHT30 T: ");
+	uart_print("SHT30 T: ");
 	itoa(sht30x->cTemp, buffer, 10);
 	uart_print(buffer);
+	memset(buffer, 0, 6);
 	uart_print("H: ");
 	itoa(sht30x->humidity, buffer, 10);
 	uart_print(buffer);
-	uart_puts('\n');*/
-	snprintf(buffer, "%d", sht30x->humidity);
+	uart_puts('\n');
+	/*sprintf(buffer, "C : %d, F : %d, H : %d\r\n", sht30x->cTemp,
+	 sht30x->fTemp, sht30x->humidity);*/
 }
 /* USER CODE END 4 */
 
