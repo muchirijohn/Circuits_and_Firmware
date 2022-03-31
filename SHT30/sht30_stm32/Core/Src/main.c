@@ -189,7 +189,7 @@ uint8_t sht30x_get() {
 		//uart_print("SHT30 DEVICE NOT READY\n");
 		return 0;
 	}
-
+	//commands to send to sht30 sensor via i2c
 	config[0] = 0x2c;
 	config[1] = 0x06;
 	//send config data
