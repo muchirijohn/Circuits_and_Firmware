@@ -108,8 +108,11 @@ int main(void) {
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
+		//print sht30 temperature and humidity to uart
 		print_SHT30_values();
+		//toggle led pin
 		HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+		//delay 500ms
 		HAL_Delay(500);
 		/* USER CODE END WHILE */
 
