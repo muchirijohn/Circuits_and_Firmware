@@ -162,9 +162,17 @@ void SystemClock_Config(void) {
 }
 
 /* USER CODE BEGIN 4 */
+
+/*
+ * print a char
+ */
 void uart_puts(char ch) {
 	HAL_UART_Transmit(&huart1, (uint8_t*) &ch, 1, 100);
 }
+
+/*
+ * print string/several characters
+ */
 void uart_print(char *ch) {
 	while (*ch) {
 		uart_puts(*ch++);
