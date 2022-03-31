@@ -100,9 +100,8 @@ int main(void) {
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
 	uart_print("SHT30 Sensor Demo\n");
-	//init sht30x temp&hum sensor
+	//set sht30 address
 	address = 0x44 << 1;
-	uart_print("Init..\n");
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
