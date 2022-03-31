@@ -181,8 +181,7 @@ uint8_t sht30x_get() {
 
 	int temp = 0;
 
-	//memset(data, 0, 6);
-
+	//check if sht30 is ready
 	state = HAL_I2C_IsDeviceReady(&hi2c1, address, 2, 2000);
 
 	if (state != HAL_OK) {
@@ -194,19 +193,21 @@ uint8_t sht30x_get() {
 	config[1] = 0x06;
 	//send config data
 	state = HAL_I2C_Master_Transmit(&hi2c1, address, &config[0], 2, 1500);
-
+	//if transmit failed return
 	if (state != HAL_OK) {
 		//uart_print("SHT30 DEVICE TRANSMIT ERROR\n");
 		return 0;
 	}
+	//delay 5ms
 	HAL_Delay(5);
 	//receive bytes
 	state = HAL_I2C_Master_Receive(&hi2c1, address, &data[0], 6, 1500);
-
+	//if receive data failed return
 	if (state != HAL_OK) {
 		//uart_print("SHT30 DEVICE RECEIVE ERROR\n");
 		return 0;
 	}
+	//delay 50ms
 	HAL_Delay(50);
 
 	temp = (data[0] * 256 + data[1]);
