@@ -99,7 +99,7 @@ void startShow(int i) {
       break;
     case 6: colorWipe(pixels.Color(0, 255, 255), 50); // Blue
       break;
-    case 7: rainbow(20);
+    case 7: rainbowCycle(20);
       break;
     default:
       break;
@@ -115,6 +115,7 @@ void colorWipe(uint32_t c, uint8_t wait) {
   }
 }
 
+uint8_t rb_cycles = 0;
 void rainbow(uint8_t wait) {
   uint16_t i, j;
 
@@ -123,12 +124,6 @@ void rainbow(uint8_t wait) {
       pixels.setPixelColor(i, Wheel((i + j) & 255));
     }
     pixels.show();
-
-    int x = accel.getX();
-    if (x < -100 && new_state == old_state) {
-      new_state = !old_state;
-      break;
-    }
   }
   delay(wait);
 }
@@ -142,6 +137,16 @@ void rainbowCycle(uint8_t wait) {
       pixels.setPixelColor(i, Wheel(((i * 256 / pixels.numPixels()) + j) & 255));
     }
     pixels.show();
+    int x = accel.getX();
+    if (x < -100 && new_state == old_state) {
+       if(rb_cycles >= 3){
+        new_state = !old_state;
+        rb_cycles = 0;
+        break;
+       } 
+       rb_cycles++;
+      break;
+    }
     delay(wait);
   }
 }
