@@ -67,7 +67,7 @@ void loop() {
   /* Display some basic information on this sensor */
   Serial.printf("X: %d , Y: %d\n", x, y);
 
-  if (x >= 150 && (new_state != old_state)) {
+  if (x <=  -150 && (new_state != old_state)) {
     show_type++;
     if (show_type > 9)
       show_type = 0;
@@ -75,7 +75,7 @@ void loop() {
     new_state = old_state;
   }
 
-  if(x <= 0 && (new_state == old_state)){
+  if(x >= 0 && (new_state == old_state)){
     new_state = !old_state;
   }
 
@@ -117,7 +117,6 @@ void colorWipe(uint32_t c, uint8_t wait) {
   }
 }
 
-// rainbow
 void rainbow(uint8_t wait) {
   uint16_t i, j;
 
