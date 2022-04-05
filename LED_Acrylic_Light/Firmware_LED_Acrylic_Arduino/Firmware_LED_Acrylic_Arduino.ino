@@ -95,13 +95,13 @@ void startShow(int i) {
       break;
     case 4: colorWipe(pixels.Color(255, 255, 0), 50);  // Blue
       break;
-    case 5: colorWipe(pixels..Color(255,   0,   255), 50); // Red
+    case 5: colorWipe(pixels.Color(255, 0, 255), 50); // Red
       break;
-    case 6: colorWipe(pixels.Color(  0,   255, 255), 50); // Blue
+    case 6: colorWipe(pixels.Color(0, 255, 255), 50); // Blue
       break;
     case 7: rainbow(20);
       break;
-  case default:
+  default:
       break;
   }
 }
