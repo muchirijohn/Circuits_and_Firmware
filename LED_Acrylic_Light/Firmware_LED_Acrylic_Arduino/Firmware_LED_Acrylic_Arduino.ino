@@ -117,6 +117,7 @@ void colorWipe(uint32_t c, uint8_t wait) {
   }
 }
 
+// rainbow
 void rainbow(uint8_t wait) {
   uint16_t i, j;
 
