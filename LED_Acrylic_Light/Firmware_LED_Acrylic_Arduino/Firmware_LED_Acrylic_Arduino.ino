@@ -35,10 +35,13 @@ void displaySensorDetails(void)
 
 //setup
 void setup() {
+  Serrial.begin(115200);
   // put your setup code here, to run once:
 pixels.begin();
+//set accel range
 accel.setRange(ADXL345_RANGE_16_G);
-
+//display sensro details
+displaySensorDetails();
 }
 
 //loop
@@ -50,7 +53,13 @@ void loop() {
 
     pixels.show(); // This sends the updated pixel color to the hardware.
 
-    delay(500); // Delay for a period of time (in milliseconds).
+    delay(100); // Delay for a period of time (in milliseconds).
 
   }
+  int x = door_stat = accel.getX();
+  int y = door_stat = accel.getY();
+  /* Display some basic information on this sensor */
+  Serial.printf("X: %d , Y: %d", x, y);
+  //Serial.print("X: "); Serial.print(door_stat); Serial.print("  ");
+  delay(500);
 }
