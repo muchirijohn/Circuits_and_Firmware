@@ -101,7 +101,7 @@ void startShow(int i) {
       break;
     case 7: rainbow(20);
       break;
-  default:
+    default:
       break;
   }
 }
@@ -123,8 +123,14 @@ void rainbow(uint8_t wait) {
       pixels.setPixelColor(i, Wheel((i + j) & 255));
     }
     pixels.show();
-    delay(wait);
+
+    int x = accel.getX();
+    if (x < -100 && new_state == old_state) {
+      new_state = !old_state;
+      break;
+    }
   }
+  delay(wait);
 }
 
 // Slightly different, this makes the rainbow equally distributed throughout
