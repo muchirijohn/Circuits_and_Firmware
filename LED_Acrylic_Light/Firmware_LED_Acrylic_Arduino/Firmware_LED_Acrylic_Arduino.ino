@@ -75,12 +75,12 @@ void loop() {
     new_state = old_state;
   }
 
-  if(x <= -140 && (new_state == old_state)){
+  if(x <= 0 && (new_state == old_state)){
     new_state = !old_state;
   }
 
-  startShow(show_type);
-  delay(20);
+  //startShow(show_type);
+  delay(100);
 }
 
 void startShow(int i) {
