@@ -39,7 +39,7 @@ void setup() {
   // put your setup code here, to run once:
   pixels.begin();
   //init accel sensor
-  f (!accel.begin())
+  if (!accel.begin())
   {
     /* There was a problem detecting the ADXL345 ... check your connections */
     Serial.println("Ooops, no ADXL345 detected ... Check your wiring!");
