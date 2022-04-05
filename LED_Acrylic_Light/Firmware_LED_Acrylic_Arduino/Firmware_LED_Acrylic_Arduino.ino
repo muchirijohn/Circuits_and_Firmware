@@ -64,8 +64,8 @@ void setup() {
 void loop() {
   int x = accel.getX();
   int y = accel.getY();
-  /* Display some basic information on this sensor */
-  Serial.printf("X: %d , Y: %d\n", x, y);
+  /* Display x and y values */
+  //Serial.printf("X: %d , Y: %d\n", x, y);
 
   if (x <=  -150 && (new_state != old_state)) {
     show_type++;
