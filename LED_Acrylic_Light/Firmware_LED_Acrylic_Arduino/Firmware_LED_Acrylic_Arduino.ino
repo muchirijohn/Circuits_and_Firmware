@@ -79,7 +79,7 @@ void loop() {
     new_state = !old_state;
   }
 
-  //startShow(show_type);
+  startShow(show_type);
   delay(100);
 }
 
