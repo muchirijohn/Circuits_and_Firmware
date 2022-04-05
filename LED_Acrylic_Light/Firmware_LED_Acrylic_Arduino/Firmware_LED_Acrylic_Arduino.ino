@@ -38,6 +38,15 @@ void setup() {
   Serial.begin(115200);
   // put your setup code here, to run once:
   pixels.begin();
+  //init accel sensor
+  f (!accel.begin())
+  {
+    /* There was a problem detecting the ADXL345 ... check your connections */
+    Serial.println("Ooops, no ADXL345 detected ... Check your wiring!");
+    while (1) {
+      delay(1);
+    }
+  }
   //set accel range
   accel.setRange(ADXL345_RANGE_16_G);
   //display sensro details
@@ -59,7 +68,7 @@ void loop() {
   int x = accel.getX();
   int y = accel.getY();
   /* Display some basic information on this sensor */
-  Serial.printf("X: %d , Y: %d", x, y);
+  Serial.printf("X: %d , Y: %d\n", x, y);
   //Serial.print("X: "); Serial.print(door_stat); Serial.print("  ");
   delay(500);
 }
