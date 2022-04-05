@@ -69,13 +69,13 @@ void loop() {
 
   if (x <=  -150 && (new_state != old_state)) {
     show_type++;
-    if (show_type > 9)
+    if (show_type > 7)
       show_type = 0;
     //startShow(show_type);
     new_state = old_state;
   }
 
-  if(x >= 0 && (new_state == old_state)){
+  if (x >= 0 && (new_state == old_state)) {
     new_state = !old_state;
   }
 
@@ -93,17 +93,15 @@ void startShow(int i) {
       break;
     case 3: colorWipe(pixels.Color(0, 0, 255), 50);  // Blue
       break;
-    case 4: theaterChase(pixels.Color(127, 127, 127), 50); // White
+    case 4: colorWipe(pixels.Color(255, 255, 0), 50);  // Blue
       break;
-    case 5: theaterChase(pixels.Color(127,   0,   0), 50); // Red
+    case 5: colorWipe(pixels..Color(255,   0,   255), 50); // Red
       break;
-    case 6: theaterChase(pixels.Color(  0,   0, 127), 50); // Blue
+    case 6: colorWipe(pixels.Color(  0,   255, 255), 50); // Blue
       break;
     case 7: rainbow(20);
       break;
-    case 8: rainbowCycle(20);
-      break;
-    case 9: theaterChaseRainbow(50);
+  case default:
       break;
   }
 }
