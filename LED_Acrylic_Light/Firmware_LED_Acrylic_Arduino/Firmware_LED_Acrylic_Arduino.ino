@@ -67,17 +67,19 @@ void loop() {
   /* Display some basic information on this sensor */
   Serial.printf("X: %d , Y: %d\n", x, y);
 
-  if (x >= 150 && new_state != old_state) {
+  if (x >= 150 && (new_state != old_state)) {
     show_type++;
     if (show_type > 9)
       show_type = 0;
-    startShow(show_type);
+    //startShow(show_type);
     new_state = old_state;
   }
 
-  if(x <= -140 && new_state == old_state){
+  if(x <= -140 && (new_state == old_state)){
     new_state = !old_state;
   }
+
+  startShow(show_type);
   delay(20);
 }
 
