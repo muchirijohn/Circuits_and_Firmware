@@ -1,3 +1,11 @@
+/*
+ * LED Acrylic Light firmware
+ * 
+ * Hardware: ESP8266 + ADXL345 + WS2812B LEDs
+ * 
+ * @Author Muchirijohn
+ */
+
 #include <Wire.h>
 #include <Adafruit_ADXL345_U.h>
 #include <Adafruit_NeoPixel.h>
@@ -5,8 +13,7 @@
 #include <avr/power.h>
 #endif
 
-// Which pin on the Arduino is connected to the NeoPixels?
-// On a Trinket or Gemma we suggest changing this to 1
+//pin connected to the ws2812/neopixel leds
 #define PIN            13
 
 // How many NeoPixels are attached to the Arduino?
