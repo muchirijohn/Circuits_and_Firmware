@@ -1,10 +1,10 @@
 /*
- * LED Acrylic Light firmware
- * 
- * Hardware: ESP8266 + ADXL345 + WS2812B LEDs
- * 
- * @Author Muchirijohn
- */
+   LED Acrylic Light firmware
+
+   Hardware: ESP8266 + ADXL345 + WS2812B LEDs
+
+   @Author Muchirijohn
+*/
 
 #include <Wire.h>
 #include <Adafruit_ADXL345_U.h>
@@ -16,12 +16,17 @@
 //pin connected to the ws2812/neopixel leds
 #define PIN            13
 
-// How many NeoPixels are attached to the Arduino?
+//number of pixels connected
 #define NUMPIXELS      2
 //accel unique id
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 //init neopixels
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+
+uint8_t new_state = 0;
+uint8_t old_state = 0;
+uint8_t show_type = 0;
 
 //display sensor details
 void displaySensorDetails(void)
@@ -40,10 +45,6 @@ void displaySensorDetails(void)
   delay(500);
 }
 
-
-uint8_t new_state = 0;
-uint8_t old_state = 0;
-uint8_t show_type = 0;
 //setup
 void setup() {
   Serial.begin(115200);
@@ -78,7 +79,6 @@ void loop() {
     show_type++;
     if (show_type > 7)
       show_type = 0;
-    //startShow(show_type);
     new_state = old_state;
   }
 
@@ -146,12 +146,12 @@ void rainbowCycle(uint8_t wait) {
     pixels.show();
     int x = accel.getX();
     if (x < -100 && new_state == old_state) {
-       if(rb_cycles >= 3){
+      if (rb_cycles >= 3) {
         new_state = !old_state;
         rb_cycles = 0;
         break;
-       } 
-       rb_cycles++;
+      }
+      rb_cycles++;
       break;
     }
     delay(wait);
